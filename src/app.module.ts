@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SubjectModule } from './subject/subject.module';
 import { StudentModule } from './student/student.module';
+import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
   imports: [
@@ -16,6 +17,11 @@ import { StudentModule } from './student/student.module';
         useNewUrlParser: true,
         useUnifiedTopology: true,
       }),
+    }),
+
+    GraphQLModule.forRoot({
+      autoSchemaFile: true,
+      playground: true,
     }),
 
     SubjectModule,
